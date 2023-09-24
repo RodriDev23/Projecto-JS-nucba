@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#menu-overlay {
+    z-index: 999;
+}
+
+#menu-toggle.open .hamburger-icon {
+    display: none;
+}
+
+#menu-toggle.open .close-icon {
+    display: inline-block;
+}
+
+
