@@ -8,7 +8,9 @@
     <link href="src/input.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex flex-col min-h-screen gap-4">
-    <div id="menu-overlay" class="fixed inset-0 right-0 left-0 hidden w-[50%] h-[90%] bg-white rounded-md">
+    
+    
+    <div id="menu-overlay" class="fixed inset-0 right-0 left-0 hidden w-[50%] h-[90%] bg-white rounded-mds flex-">
         <ul class="pt-8 space-y-4 flex-col">
             <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Inicio</a></li>
             <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Política</a></li>
@@ -23,19 +25,34 @@
         </div>
     </div>
 
+
     <header class="bg-blue-500 p-5">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-white text-2xl font-semibold">La Voz Diaria</h1>
-            <button id="menu-toggle" class="lg:hidden block">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-        </div>
-    </header>
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-white text-2xl font-semibold">La Voz Diaria</h1>
+        <nav class="hidden lg:flex space-x-4 text-2xl font-bold">
+            <a href="#noticias-principal" class="text-white hover:text-gray-200">Inicio</a>
+            <a href="#noticias-destacadas" class="text-white hover:text-gray-200">Política</a>
+            <a href="#noticias-deportes" class="text-white hover:text-gray-200">Deportes</a>
+            <a href="#noticias-recientes" class="text-white hover:text-gray-200">Tecnología</a>
+        </nav>
+       
+        <form id="search-form" class="gap-10 flex">
+         <input type="text" id="search-input" placeholder="Buscar noticias" class="border border-gray-300 rounded-md py-2 px-3 text-sm">
+      <button type="submit" class="bg-blue-500 text-white text-base py-2 px-4 rounded-md borderborder-white">Buscar</button>
+     </form>
+
+
+        <button id="menu-toggle" class="lg:hidden block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </div>
+</header>
+
 
     <!-- Menú derecho (inicialmente oculto) -->
-    <div id="right-menu" class="lg:hidden fixed inset-y-0 right-0 w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div id="right-menu" class="lg:hidden fixed inset-y-0 right-0 w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
         <ul class="pt-8 space-y-4">
             <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Inicio</a></li>
             <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Política</a></li>
@@ -43,7 +60,22 @@
             <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Tecnología</a></li>
         </ul>
     </div>
-     <section class="py-8">
+
+
+
+
+    <div class="h-10 w-40 bg-white text-black flex justify-center items-center">
+    <div id="filtered-news" class="flex justify-center items-center h-2 w-2 bg-white text-black gap-10">
+        <h2 class="text-black">
+            Buscar Item
+        </h2>
+    </div>
+</div>
+
+
+    
+
+<section class="py-8" id="noticias-principal" data-category="principal" class="news-item">
         <div class="container mx-auto h-30">
             <h2 class="text-5xl font-bold ml-5">Noticial Princial</h2>
             <div id="principal-news" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-4">
@@ -51,7 +83,7 @@
         </div>
     </section>
 
-    <section class="py-8">
+    <section class="py-8" id="noticias-destacadas" data-category="politica" class="news-item">
         <div class="container mx-auto">
             <h2 class="text-2xl font-semibold ml-5">Noticias Destacadas</h2>
             <div id="featured-news" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
@@ -59,14 +91,14 @@
         </div>
     </section>
 
-    <section class="py-8 bg-gray-100">
+    <section class="py-8" id="noticias-recientes" data-category="tech" class="news-item">
         <div class="container mx-auto">
             <h2 class="text-2xl font-semibold">Noticias Recientes</h2>
-            <div id="recent-news" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+            <div id="recent-news" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
             </div>
         </div>
     </section>
-    <section class="py-8">
+    <section class="py-8" id="noticias-deportes" data-category="deporte" class="news-item">
         <div class="container mx-auto">
             <h2 class="text-2xl font-semibold">Otras Noticias</h2>
             <div id="other-news" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
@@ -74,8 +106,12 @@
         </div>
     </section>
 
+   
+
+  
+
     <section class="py-8">
-        <div class="container mx-auto">
+        <div class="container  mx-auto gap-10">
             <h2 class="text-2xl font-semibold">Contacto</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                 <div class="bg-white p-4 rounded-lg shadow gap-10">
@@ -87,9 +123,9 @@
                         <p class="text-gray-600">Teléfono: +123 456 7890</p>
                     </address>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow gap-10">
-                    <h3 class="text-lg font-semibold mt-2">Envíanos un Mensaje</h3>
-                    <form id="contact-form gap-20">
+                <div class="bg-white p-4 rounded-lg shadow gap-20 text-xl">
+                    <h3 class="text-2xl font-semibold mt-2">Envíanos un Mensaje</h3>
+                    <form id="contact-form" novalidate class=" focus:outline-black">
                         <div class="mt-4">
                             <label for="email" class="block text-gray-600">Tu Correo Electrónico</label>
                             <input type="email" id="email" name="email" class="w-full border rounded-md py-2 px-3 text-gray-700 focus:outline-none focus:border-black" required>
@@ -118,6 +154,7 @@
     </footer>
 
     <script src="src/index.js"></script>
+    <script src="src/news-filter.js"></script>
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const rightMenu = document.getElementById('right-menu');

@@ -1,3 +1,7 @@
+//import newsFilter from "./news-filter";
+
+
+
 function removeFavorite(title) {
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     const index = favorites.indexOf(title);
@@ -68,8 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     function createNews(title, imageUrl, content, category) {
         const newsItem = document.createElement("div");
-        newsItem.classList.add("bg-white", "p-4", "rounded-lg", "shadow", "w-full", "flex", "flex-col", "gap-10");
-
+        newsItem.classList.add("bg-white", "p-4", "rounded-lg", "shadow", "w-full", "flex", "flex-col", "gap-10");  
+       newsItem.classList.add("news-item");     
         const image = document.createElement("img");
         image.src = imageUrl;
         image.alt = title;
@@ -85,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const categoryTag = document.createElement("span");
         categoryTag.textContent = category;
+        categoryTag.dataset.category = category; // Asigna la categoría al dataset del categoryTag
         categoryTag.classList.add("text-back", "hover:underline", "mt-4", "block", "mb-5");
 
       
@@ -260,9 +265,23 @@ document.addEventListener("DOMContentLoaded", function () {
         rightMenu.classList.add("hidden");
         menuOverlay.classList.add("hidden");
     });
+    
+    
+    
     const contactForm = document.getElementById("contact-form");
     contactForm.addEventListener("submit", function (event) {
-        event.preventDefault(); 
+        event.preventDefault(); // añadido el evento prevent defaults
         alert("thanks for sending your message!")
     });
 });
+
+
+
+
+
+
+
+
+
+
+
